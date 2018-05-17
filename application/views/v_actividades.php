@@ -41,8 +41,8 @@
 		</header>
 		<div class="content">
 			<input type="text" class="form-control" id="tarea" placeholder="Tarea" style="max-width: 300px;">
-			<input type="date" class="form-control" id="tiempo" placeholder="Tiempo" style="max-width: 300px;">
-			<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="crearProyecto()"><i class="mdi mdi-add"></i></button>
+			<input type="text" class="form-control" id="tiempo" placeholder="Tiempo(Horas)" style="max-width: 300px;">
+			<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="crearActividad()"><i class="mdi mdi-add"></i></button>
 			<div class="actividades">
 				<h3>Actividad 1</h3>
 				<div class="progress">

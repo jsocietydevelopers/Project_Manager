@@ -14,6 +14,23 @@ class Actividades extends CI_Controller {
     }
 	public function index(){
         $data['proyecto'] = strtoupper($this->session->userdata('proyect_name'));
+        $html = '';
+        $cont = 1;
 		$this->load->view('v_actividades', $data);
 	}
+    function crearActividad(){
+        $data['error'] = EXIT_ERROR;
+        $data['msj']   = null;
+        try {
+            $tarea      = $this->input->post('tarea');
+            $tiempo     = $this->input->post('tiempo');
+            $arrayInsert   = array('Nombre' => $tarea,
+                                   'tiempo' => $tiempo);
+            $datoInsert    = $this->M_usuario->insertarDatos($arrayInsert, 'actividades');
+            $data['error'] = EXIT_SUCCESS;
+        }catch(Exception $e){
+            $data['msj'] = $e->getMessage();
+        }
+        echo json_encode($data);
+    }
 }
