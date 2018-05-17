@@ -37,42 +37,23 @@
 	</header>
 	<section id="main-content">
 		<header>
-			<h1>Crear proyecto</h1>
+			<h1><?php echo $proyecto ?></h1>
 		</header>
 		<div class="content">
-				   <input type="text" class="form-control" id="proyect_name" placeholder="Nombre del proyecto" style="max-width: 300px;">
-				   	<span class="mdl-chip mdl-chip--contact mdl-chip--deletable">
-					    <img class="mdl-chip__contact" src="<?php echo RUTA_IMG?>1.jpg">
-					   <a onclick="guadarNombre('Mauricio merino')"><span class="mdl-chip__text">Mauricio merino</span></a> 
-				   </span>
-				   </button>
-				   
-				   <span class="mdl-chip mdl-chip--contact mdl-chip--deletable">
-					    <img class="mdl-chip__contact" src="<?php echo RUTA_IMG?>2.jpg">
-					    <a onclick="guadarNombre('José Minaya')"><span class="mdl-chip__text">José Minaya</span></a>
-				   </span>
-				   <span class="mdl-chip mdl-chip--contact mdl-chip--deletable">
-					    <img class="mdl-chip__contact" src="<?php echo RUTA_IMG?>3.jpg">
-					    <a onclick="guadarNombre('Jhonatan Iberico')"><span class="mdl-chip__text">Jhonatan Iberico</span></a>
-				   </span>
-				   </br>
-	               <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="crearProyecto()"><i class="mdi mdi-add"></i>Crear Proyecto</button>
-	               <!-- <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="crearGrupo()"><i class="mdi mdi-add"></i>Crear Grupo</button> -->
-			  	<table class="table">
-				    <thead>
-				      <tr>
-				        <th>Nombre del proyecto</th>
-				        <th>Colaboradores</th>
-				        <th>Estatus</th>
-				        <th>Acción</th>
-				      </tr>
-				    </thead>
-				    <tbody id="proyectos">
-				      <?php echo $tabla ?>
-				    </tbody>
-				  </table>
+			<input type="text" class="form-control" id="tarea" placeholder="Tarea" style="max-width: 300px;">
+			<input type="date" class="form-control" id="tiempo" placeholder="Tiempo" style="max-width: 300px;">
+			<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="crearProyecto()"><i class="mdi mdi-add"></i></button>
+			<div class="actividades">
+				<h3>Actividad 1</h3>
+				<div class="progress">
+				    <div class="progress-bar" style="width:0%; color:black">0%</div>
+				</div>
+				<a onclick="cambiarInput()"><span id="activi">Ingrese una actividad...</span></a>
+				<input type="text" class="form-control" id="actividad" placeholder="Ingrese una actividad..." style="display: none;">
+				<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" id="btnActividad" onclick="crearActividad()" style="display: none;"><i class="mdi mdi-add"></i>Crear actividad</button>
 			</div>
 		</div>
+				
 	</section>
 	<div class="modal fade" id="ModalIquote" tabindex="-1" role="dialog" aria-labelledby="simpleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
@@ -97,6 +78,7 @@
         <script src="<?php echo RUTA_PLUGINS?>bootstrap/js/bootstrap.min.js?v=<?php echo time();?>"></script>
         <script src="<?php echo RUTA_PLUGINS?>bootstrap-select/js/bootstrap-select.min.js?v=<?php echo time();?>"></script>
         <script src="<?php echo RUTA_PLUGINS?>bootstrap-select/js/i18n/defaults-es_ES.min.js?v=<?php echo time();?>"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
         <script src="<?php echo RUTA_PLUGINS?>bTable/bootstrap-table.js?v=<?php echo time();?>"></script>
         <script src="<?php echo RUTA_PLUGINS?>mdl/material.min.js?v=<?php echo time();?>"></script>
         <script src="<?php echo RUTA_PLUGINS?>toaster/toastr.js?v=<?php echo time();?>"></script>
