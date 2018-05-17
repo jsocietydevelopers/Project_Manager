@@ -83,3 +83,29 @@ defined('EXIT_USER_INPUT')     OR define('EXIT_USER_INPUT', 7); // invalid user 
 defined('EXIT_DATABASE')       OR define('EXIT_DATABASE', 8); // database error
 defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
+
+
+//	RECURSOS PUBLICOS
+defined('RUTA_CSS')     OR define('RUTA_CSS'    , 'http://'.(isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : null).'/Project_Manager/public/css/');
+defined('RUTA_FONTS')   OR define('RUTA_FONTS'  , 'http://'.(isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : null).'/Project_Manager/public/fonts/');
+defined('RUTA_IMG')     OR define('RUTA_IMG'    , 'http://'.(isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : null).'/Project_Manager/public/img/');
+defined('RUTA_JS')      OR define('RUTA_JS'     , 'http://'.(isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : null).'/Project_Manager/public/js/');
+defined('RUTA_PLUGINS') OR define('RUTA_PLUGINS', 'http://'.(isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : null).'/Project_Manager/public/plugins/');
+
+//defined('CHARSET_ISO_8859_1') OR define('CHARSET_ISO_8859_1', 'Content-Type: text/html; charset=ISO-8859-1');
+defined('PROYECTO_NAME')      OR define('PROYECTO_NAME','Project_Manager');
+//defined('RUTA_SAP') OR define('RUTA_SAP', 'http://'.(isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : null).'/'.PROYECTO_NAME.'/');
+
+defined('RUTA_SAP') OR define('RUTA_SAP', 'http://'.(isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : null).'/');
+
+
+//MENSAJES DE ERROR,CONFIRMACION Y EDICION
+defined('MSJ_INS') OR define('MSJ_INS', 'Se Registr&oacute; Correctamente');
+defined('MSJ_UPT') OR define('MSJ_UPT', 'Se Edit&oacute; Correctamente');
+defined('MSJ_DEL') OR define('MSJ_DEL', 'Se Elimin&oacute; Correctamente');
+defined('MSJ_ANL') OR define('MSJ_ANL', 'Se Anul&oacute; Correctamente');
+defined('MSJ_GEN') OR define('MSJ_GEN', 'Se Gener&oacute; Correctamente');
+defined('MSJ_INSERT_ERROR')   OR define('MSJ_INSERT_ERROR', 'Se ha insertado incorrectamente');
+defined('MSJ_INSERT_SUCCESS') OR define('MSJ_INSERT_SUCCESS', 'Se ha insertado correctamente');
+defined('MSJ_DELETE_ERROR')   OR define('MSJ_DELETE_ERROR', 'Se ha eliminado incorrectamente');
+defined('MSJ_DELETE_SUCCESS') OR define('MSJ_DELETE_SUCCESS', 'Se ha eliminado correctamente');
