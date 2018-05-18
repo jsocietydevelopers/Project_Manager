@@ -56,6 +56,7 @@ function guadarNombre(name){
 function cambiarInput(num){
 	$('#activi'+num).css('display', 'none');
 	$('#actividad'+num).css('display', 'block');
+	$('#horas'+num).css('display', 'block');
 	$('#actividad').focus();
 	$('#btnActividad'+num).css('display', 'block')
 }
@@ -74,7 +75,7 @@ function crearTarea(){
 	$.ajax({
 		data : {tarea  : tarea,
 			    tiempo : tiempo},
-		url  : 'Actividades/crearActividad',
+		url  : 'Actividades/crearTarea',
 		type : 'POST'
 	}).done(function(data){
 		try{
@@ -86,6 +87,7 @@ function crearTarea(){
 				'</div>'+
 				'<a onclick="cambiarInput()"><span id="activi'+cont+'">Ingrese una actividad...</span></a>'+
 				'<input type="text" class="form-control" id="actividad'+cont+'" placeholder="Ingrese una actividad..." style="display: none;">'+
+				'<input type="text" class="form-control" id="horas'+cont+'" placeholder="Nro Horas" style="display: none;">'+
 				'<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" id="btnActividad'+cont+'" onclick="crearActividad()" style="display: none;"><i class="mdi mdi-add"></i>Crear actividad</button>';
 	    	$('.actividades').append(html);
 	    	cont++;
@@ -100,19 +102,19 @@ function crearTarea(){
 }
 function crearActividad(num){
 	var activi = $('#acti'+num).val();
-	var tiempo = $('#tiempo').val();
+	var horas = $('#horas'+num).val();
 	var cont = 1;
-	if(tarea == null || tarea == ''){
-		msj('error', 'Ingrese la tarea');
+	if(activi == null || activi == ''){
+		msj('error', 'Ingrese la actividad');
 		return;
 	}
-	if(tiempo == null || tiempo == ''){
+	if(horas == null || horas == ''){
 		msj('error', 'Ingrese el tiempo');
 		return;
 	}
 	$.ajax({
-		data : {tarea  : tarea,
-			    tiempo : tiempo},
+		data : {activi  : activi,
+			    horas   : horas},
 		url  : 'Actividades/crearActividad',
 		type : 'POST'
 	}).done(function(data){

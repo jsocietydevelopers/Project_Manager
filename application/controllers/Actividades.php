@@ -27,6 +27,7 @@ class Actividades extends CI_Controller {
                 '</div>'.
                 '<a onclick="cambiarInput('.$cont.')"><span id="activi'.$cont.'">Ingrese una actividad...</span></a>'.
                 '<input type="text" class="form-control" id="actividad'.$cont.'" placeholder="Ingrese una actividad..." style="display: none;">'.
+                '<input type="text" class="form-control" id="horas'.$cont.'" placeholder="Nro Horas" style="display: none;">'.
                 '<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" id="btnActividad'.$cont.'" onclick="crearActividad('.$cont.')" style="display: none;"><i class="mdi mdi-add"></i>Crear actividad</button>';
                 $cont++;
             }
@@ -34,7 +35,7 @@ class Actividades extends CI_Controller {
         $data['html'] = $html;
 		$this->load->view('v_actividades', $data);
 	}
-    function crearActividad(){
+    function crearTarea(){
         $data['error'] = EXIT_ERROR;
         $data['msj']   = null;
         try {
@@ -42,6 +43,21 @@ class Actividades extends CI_Controller {
             $tiempo     = $this->input->post('tiempo');
             $arrayInsert   = array('Nombre' => $tarea,
                                    'tiempo' => $tiempo);
+            $datoInsert    = $this->M_usuario->insertarDatos($arrayInsert, 'tareas');
+            $data['error'] = EXIT_SUCCESS;
+        }catch(Exception $e){
+            $data['msj'] = $e->getMessage();
+        }
+        echo json_encode($data);
+    }
+    function crearActividad(){
+        $data['error'] = EXIT_ERROR;
+        $data['msj']   = null;
+        try {
+            $activi      = $this->input->post('activi');
+            $horas     = $this->input->post('horas');
+            $arrayInsert   = array('Nombre' => $activi,
+                                   'horas'  => $horas);
             $datoInsert    = $this->M_usuario->insertarDatos($arrayInsert, 'actividades');
             $data['error'] = EXIT_SUCCESS;
         }catch(Exception $e){
