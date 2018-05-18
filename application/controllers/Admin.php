@@ -85,7 +85,7 @@ class Admin extends CI_Controller {
 					        </td>
 					     </tr>';
 			}else {
-				foreach ($datos as $key) {
+				foreach ($datos as $key){
 					$html  .= '<tr>
 						        <td>'.$key->Nombre.'</td>
 						        <td>'.$key->colaboradores.'</td>
