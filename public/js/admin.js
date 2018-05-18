@@ -1,5 +1,4 @@
 function editarProyecto(dato, nombre){
-	//crear cards
 	$.ajax({
 		data : {proyecto : nombre},
 		url  : 'Admin/editarProyecto',
