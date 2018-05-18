@@ -25,9 +25,9 @@ class Actividades extends CI_Controller {
                 '<div class="progress">'.
                     '<div class="progress-bar" style="width:0%; color:black">0%</div>'.
                 '</div>'.
-                '<a onclick="cambiarInput()"><span id="activi'.$cont.'">Ingrese una actividad...</span></a>'.
+                '<a onclick="cambiarInput('.$cont.')"><span id="activi'.$cont.'">Ingrese una actividad...</span></a>'.
                 '<input type="text" class="form-control" id="actividad'.$cont.'" placeholder="Ingrese una actividad..." style="display: none;">'.
-                '<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" id="btnActividad'.$cont.'" onclick="crearActividad()" style="display: none;"><i class="mdi mdi-add"></i>Crear actividad</button>';
+                '<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" id="btnActividad'.$cont.'" onclick="crearActividad('.$cont.')" style="display: none;"><i class="mdi mdi-add"></i>Crear actividad</button>';
                 $cont++;
             }
         }

@@ -51,14 +51,13 @@ function crearProyecto(){
 var nombre_pers = null;
 var arr_names   = [];
 function guadarNombre(name){
-	//nombre_pers = name;
 	arr_names.push(name);
 }
-function cambiarInput(){
-	$('#activi').css('display', 'none');
-	$('#actividad').css('display', 'block');
+function cambiarInput(num){
+	$('#activi'+num).css('display', 'none');
+	$('#actividad'+num).css('display', 'block');
 	$('#actividad').focus();
-	$('#btnActividad').css('display', 'block')
+	$('#btnActividad'+num).css('display', 'block')
 }
 function crearTarea(){
 	var tarea = $('#tarea').val();
@@ -99,8 +98,8 @@ function crearTarea(){
 	  }
 	});
 }
-function crearActividad(){
-	var tarea = $('#tarea').val();
+function crearActividad(num){
+	var activi = $('#acti'+num).val();
 	var tiempo = $('#tiempo').val();
 	var cont = 1;
 	if(tarea == null || tarea == ''){
