@@ -14,9 +14,9 @@ class Actividades extends CI_Controller {
     }
 	public function index(){
         $data['proyecto'] = strtoupper($this->session->userdata('proyect_name'));
-        $html = '';
-        $cont = 1;
-        $acti = '';
+        $html  = '';
+        $cont  = 1;
+        $acti  = '';
         $datos = $this->M_usuario->getTareas($this->session->userdata('Id_user'));
         if(count($datos) == 0){
             return;
@@ -65,14 +65,14 @@ class Actividades extends CI_Controller {
         $data['error'] = EXIT_ERROR;
         $data['msj']   = null;
         try {
-            $activi       = $this->input->post('activi');
-            $horas        = $this->input->post('horas');
-            $arrayInsert  = array('Nombre' => $activi,
-                                  'tiempo'  => $horas);
-            $datoInsert   = $this->M_usuario->insertarDatos($arrayInsert, 'actividades');
-            $html = '';
-            $cont = 1;
-            $datos = $this->M_usuario->getActividades($this->session->userdata('Id_user'));
+            $activi      = $this->input->post('activi');
+            $horas       = $this->input->post('horas');
+            $arrayInsert = array('Nombre' => $activi,
+                                 'tiempo' => $horas);
+            $datoInsert  = $this->M_usuario->insertarDatos($arrayInsert, 'actividades');
+            $html        = '';
+            $cont        = 1;
+            $datos       = $this->M_usuario->getActividades($this->session->userdata('Id_user'));
             if(count($datos) == 0){
                 return;
             }else {
@@ -81,8 +81,8 @@ class Actividades extends CI_Controller {
                     $cont++;
                 }
             }
-            $data['html_activi']  = $html;
-            $data['error'] = EXIT_SUCCESS;
+            $data['html_activi'] = $html;
+            $data['error']       = EXIT_SUCCESS;
         }catch(Exception $e){
             $data['msj'] = $e->getMessage();
         }

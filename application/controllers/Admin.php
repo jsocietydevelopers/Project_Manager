@@ -75,7 +75,7 @@ class Admin extends CI_Controller {
 			$html  = '';
 			$count = 1;
 			if(count($datos) == 0){
-				$html  = '<tr>
+				$html = '<tr>
 					        <td>-</td>
 					        <td>-</td>
 					        <td>-</td>
@@ -83,7 +83,7 @@ class Admin extends CI_Controller {
 					        	<button class="mdl-button mdl-js-button mdl-button--icon" data-toggle="tooltip" data-placement="bottom" title="Editar" id="editar" onclick="editarProyecto()"><i class="mdi mdi-edit"></i></button>
 	                        	<button class="mdl-button mdl-js-button mdl-button--icon" data-toggle="tooltip" data-placement="bottom" title="Eliminar" id="eliminar" onclick="modalEliminar(this)"><i class="mdi mdi-delete"></i></button>
 					        </td>
-					      </tr>';
+					     </tr>';
 			}else {
 				foreach ($datos as $key) {
 					$html  .= '<tr>
