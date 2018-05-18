@@ -81,14 +81,18 @@ function crearTarea(){
 		try{
 	    data = JSON.parse(data);
 	    if(data.error == 0){
-	    	var html = '<h3>'+tarea+'</h3>'+
-				'<div class="progress">'+
-				    '<div class="progress-bar" style="width:0%; color:black">0%</div>'+
-				'</div>'+
-				'<a onclick="cambiarInput()"><span id="activi'+cont+'">Ingrese una actividad...</span></a>'+
-				'<input type="text" class="form-control" id="actividad'+cont+'" placeholder="Ingrese una actividad..." style="display: none;">'+
-				'<input type="text" class="form-control" id="horas'+cont+'" placeholder="Nro Horas" style="display: none;">'+
-				'<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" id="btnActividad'+cont+'" onclick="crearActividad()" style="display: none;"><i class="mdi mdi-add"></i>Crear actividad</button>';
+	    	var html = '<div class="div-activis'+cont+'">'+
+	    			   '<h3>'+tarea+'</h3>'+
+						'<div class="progress">'+
+						    '<div class="progress-bar" style="width:0%; color:black">0%</div>'+
+						'</div>'+
+						'<div class="add-activis">'+
+							'<a onclick="cambiarInput()"><span id="activi'+cont+'">Ingrese una actividad...</span></a>'+
+						'</div>'+
+						'<input type="text" class="form-control" id="actividad'+cont+'" placeholder="Ingrese una actividad..." style="display: none;">'+
+						'<input type="text" class="form-control" id="horas'+cont+'" placeholder="Nro Horas" style="display: none;">'+
+						'<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" id="btnActividad'+cont+'" onclick="crearActividad()" style="display: none;"><i class="mdi mdi-add"></i>Crear actividad</button>'
+						'</div>';
 	    	$('.actividades').append(html);
 	    	cont++;
 	    }else {
@@ -101,7 +105,7 @@ function crearTarea(){
 	});
 }
 function crearActividad(num){
-	var activi = $('#acti'+num).val();
+	var activi = $('#actividad'+num).val();
 	var horas = $('#horas'+num).val();
 	var cont = 1;
 	if(activi == null || activi == ''){
@@ -121,7 +125,9 @@ function crearActividad(num){
 		try{
 	    data = JSON.parse(data);
 	    if(data.error == 0){
-	    	
+	    	//var html = '';
+	    	$('.add-activis').html('');
+	    	$('.add-activis').html(data.html_activi);
 	    }else {
 	    	msj('error', data.msj);
 	    	return;

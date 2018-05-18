@@ -16,19 +16,29 @@ class Actividades extends CI_Controller {
         $data['proyecto'] = strtoupper($this->session->userdata('proyect_name'));
         $html = '';
         $cont = 1;
-        $datos = $this->M_usuario->getActividades($this->session->userdata('Id_user'));
+        $acti = '';
+        $datos = $this->M_usuario->getTareas($this->session->userdata('Id_user'));
         if(count($datos) == 0){
             return;
         }else {
             foreach ($datos as $key){
-                $html .= '<h3>'.$key->tarea.'</h3>'.
-                '<div class="progress">'.
-                    '<div class="progress-bar" style="width:0%; color:black">0%</div>'.
-                '</div>'.
-                '<a onclick="cambiarInput('.$cont.')"><span id="activi'.$cont.'">Ingrese una actividad...</span></a>'.
-                '<input type="text" class="form-control" id="actividad'.$cont.'" placeholder="Ingrese una actividad..." style="display: none;">'.
-                '<input type="text" class="form-control" id="horas'.$cont.'" placeholder="Nro Horas" style="display: none;">'.
-                '<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" id="btnActividad'.$cont.'" onclick="crearActividad('.$cont.')" style="display: none;"><i class="mdi mdi-add"></i>Crear actividad</button>';
+                /*if($key->acti_name == ''){
+                    $acti .= '<a onclick="cambiarInput('.$cont.')"><span id="activi'.$cont.'">Ingrese una actividad...</span></a></br>';
+                }else {
+                    $acti .= '<a onclick="cambiarInput('.$cont.')"><span id="activi'.$cont.'">'.$key->acti_name.'</span></a></br>';
+                }*/
+                $html .= '<div class="div-activis'.$cont.'">
+                          <h3>'.$key->tarea.'</h3>'.
+                          '<div class="progress">'.
+                             '<div class="progress-bar" style="width:0%; color:black">0%</div>'.
+                          '</div>'.
+                          '<div class="add-activis">'.
+                            '<a onclick="cambiarInput('.$cont.')"><span id="activi'.$cont.'">Ingrese una actividad...</span></a></br>'.
+                          '</div>'.
+                          '<input type="text" class="form-control" id="actividad'.$cont.'" placeholder="Ingrese una actividad..." style="display: none;">'.
+                          '<input type="text" class="form-control" id="horas'.$cont.'" placeholder="Nro Horas" style="display: none;">'.
+                          '<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" id="btnActividad'.$cont.'" onclick="crearActividad('.$cont.')" style="display: none;"><i class="mdi mdi-add"></i>Crear actividad</button>
+                          </div>';
                 $cont++;
             }
         }
@@ -39,10 +49,11 @@ class Actividades extends CI_Controller {
         $data['error'] = EXIT_ERROR;
         $data['msj']   = null;
         try {
-            $tarea      = $this->input->post('tarea');
-            $tiempo     = $this->input->post('tiempo');
-            $arrayInsert   = array('Nombre' => $tarea,
-                                   'tiempo' => $tiempo);
+            $tarea         = $this->input->post('tarea');
+            $tiempo        = $this->input->post('tiempo');
+            $arrayInsert   = array('Nombre'     => $tarea,
+                                   'tiempo'     => $tiempo,
+                                   'id_project' => $this->session->userdata('Id_project'));
             $datoInsert    = $this->M_usuario->insertarDatos($arrayInsert, 'tareas');
             $data['error'] = EXIT_SUCCESS;
         }catch(Exception $e){
@@ -54,11 +65,23 @@ class Actividades extends CI_Controller {
         $data['error'] = EXIT_ERROR;
         $data['msj']   = null;
         try {
-            $activi      = $this->input->post('activi');
-            $horas     = $this->input->post('horas');
-            $arrayInsert   = array('Nombre' => $activi,
-                                   'horas'  => $horas);
-            $datoInsert    = $this->M_usuario->insertarDatos($arrayInsert, 'actividades');
+            $activi       = $this->input->post('activi');
+            $horas        = $this->input->post('horas');
+            $arrayInsert  = array('Nombre' => $activi,
+                                  'tiempo'  => $horas);
+            $datoInsert   = $this->M_usuario->insertarDatos($arrayInsert, 'actividades');
+            $html = '';
+            $cont = 1;
+            $datos = $this->M_usuario->getActividades($this->session->userdata('Id_user'));
+            if(count($datos) == 0){
+                return;
+            }else {
+                foreach ($datos as $key){
+                    $html .= '<a onclick="cambiarInput('.$cont.')"><span id="activi'.$cont.'">'.$activi.'</span></a></br>';
+                    $cont++;
+                }
+            }
+            $data['html_activi']  = $html;
             $data['error'] = EXIT_SUCCESS;
         }catch(Exception $e){
             $data['msj'] = $e->getMessage();

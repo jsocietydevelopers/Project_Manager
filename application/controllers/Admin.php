@@ -44,8 +44,10 @@ class Admin extends CI_Controller {
 		$data['error'] = EXIT_ERROR;
 		$data['msj']   = null;
 		try {
-			$proyecto = $this->input->post('proyecto');
-			$session  = array('proyect_name' => $proyecto);
+			$proyecto    = $this->input->post('proyecto');
+			$id_proyecto = $this->M_usuario->getIdProyecto($proyecto);
+			$session     = array('proyect_name' => $proyecto,
+								 'Id_project'   => $$id_proyecto);
 			$this->session->set_userdata($session);
 			$data['error'] = EXIT_SUCCESS;
 		}catch(Exception $e){
@@ -64,6 +66,11 @@ class Admin extends CI_Controller {
 								   'estatus' 	   => 'Creado',
 								   'Id_persona'    => $this->session->userdata('Id_user'));
             $datoInsert    = $this->M_usuario->insertarDatos($arrayInsert, 'proyectos');
+            $session  = array('Nombre'   	  => $proyecto,
+							  'colaboradores' => $colaboradores,
+							  'estatus' 	  => 'Creado',
+							  'Id_project' 	  => $datoInsert['Id']);
+			$this->session->set_userdata($session);
 			$datos = $this->M_usuario->getProyectos($this->session->userdata('Id_user')); 
 			$html  = '';
 			$count = 1;
