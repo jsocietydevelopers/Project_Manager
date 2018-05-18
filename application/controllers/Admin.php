@@ -17,7 +17,7 @@ class Admin extends CI_Controller {
 		$html  = '';
 		$count = 1;
 		if(count($datos) == 0){
-			$html  = '<tr>
+			$html = '<tr>
 				        <td>-</td>
 				        <td>-</td>
 				        <td>-</td>
@@ -25,7 +25,7 @@ class Admin extends CI_Controller {
 				      </tr>';
 		}else {
 			foreach ($datos as $key) {
-				$html  .= '<tr>
+				$html .= '<tr>
 					        <td>'.$key->Nombre.'</td>
 					        <td>'.$key->colaboradores.'</td>
 					        <td>'.$key->estatus.'</td>
@@ -66,10 +66,10 @@ class Admin extends CI_Controller {
 								   'estatus' 	   => 'Creado',
 								   'Id_persona'    => $this->session->userdata('Id_user'));
             $datoInsert    = $this->M_usuario->insertarDatos($arrayInsert, 'proyectos');
-            $session  = array('Nombre'   	  => $proyecto,
-							  'colaboradores' => $colaboradores,
-							  'estatus' 	  => 'Creado',
-							  'Id_project' 	  => $datoInsert['Id']);
+            $session  	   = array('Nombre'   	   => $proyecto,
+								   'colaboradores' => $colaboradores,
+								   'estatus' 	   => 'Creado',
+								   'Id_project'    => $datoInsert['Id']);
 			$this->session->set_userdata($session);
 			$datos = $this->M_usuario->getProyectos($this->session->userdata('Id_user')); 
 			$html  = '';
