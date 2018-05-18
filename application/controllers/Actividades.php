@@ -16,6 +16,22 @@ class Actividades extends CI_Controller {
         $data['proyecto'] = strtoupper($this->session->userdata('proyect_name'));
         $html = '';
         $cont = 1;
+        $datos = $this->M_usuario->getActividades($this->session->userdata('Id_user'));
+        if(count($datos) == 0){
+            return;
+        }else {
+            foreach ($datos as $key){
+                $html .= '<h3>'.$key->tarea.'</h3>'.
+                '<div class="progress">'.
+                    '<div class="progress-bar" style="width:0%; color:black">0%</div>'.
+                '</div>'.
+                '<a onclick="cambiarInput()"><span id="activi'.$cont.'">Ingrese una actividad...</span></a>'.
+                '<input type="text" class="form-control" id="actividad'.$cont.'" placeholder="Ingrese una actividad..." style="display: none;">'.
+                '<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" id="btnActividad'.$cont.'" onclick="crearActividad()" style="display: none;"><i class="mdi mdi-add"></i>Crear actividad</button>';
+                $cont++;
+            }
+        }
+        $data['html'] = $html;
 		$this->load->view('v_actividades', $data);
 	}
     function crearActividad(){

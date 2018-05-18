@@ -42,15 +42,16 @@
 		<div class="content">
 			<input type="text" class="form-control" id="tarea" placeholder="Tarea" style="max-width: 300px;">
 			<input type="text" class="form-control" id="tiempo" placeholder="Tiempo(Horas)" style="max-width: 300px;">
-			<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="crearActividad()"><i class="mdi mdi-add"></i></button>
+			<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" onclick="crearTarea()"><i class="mdi mdi-add"></i></button>
 			<div class="actividades">
-				<h3>Actividad 1</h3>
+				<!-- <h3>Actividad 1</h3>
 				<div class="progress">
 				    <div class="progress-bar" style="width:0%; color:black">0%</div>
 				</div>
 				<a onclick="cambiarInput()"><span id="activi">Ingrese una actividad...</span></a>
 				<input type="text" class="form-control" id="actividad" placeholder="Ingrese una actividad..." style="display: none;">
-				<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" id="btnActividad" onclick="crearActividad()" style="display: none;"><i class="mdi mdi-add"></i>Crear actividad</button>
+				<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect" id="btnActividad" onclick="crearActividad()" style="display: none;"><i class="mdi mdi-add"></i>Crear actividad</button> -->
+                <?php echo $html ?>
 			</div>
 		</div>
 				
