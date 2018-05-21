@@ -47,7 +47,7 @@ class Admin extends CI_Controller {
 			$proyecto    = $this->input->post('proyecto');
 			$id_proyecto = $this->M_usuario->getIdProyecto($proyecto);
 			$session     = array('proyect_name' => $proyecto,
-								 'Id_project'   => $$id_proyecto);
+								 'Id_project'   => $id_proyecto);
 			$this->session->set_userdata($session);
 			$data['error'] = EXIT_SUCCESS;
 		}catch(Exception $e){

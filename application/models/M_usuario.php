@@ -35,15 +35,17 @@ class M_usuario extends  CI_Model{
         $result = $this->db->query($sql, array($user));
         return $result->result();
     }
-    function getTareas($id_user ){
+    function getTareas($id_user){
       $sql = "SELECT t.*,
                      t.Nombre AS tarea,
                      p.*
                 FROM tareas t,
                      proyectos p
                WHERE p.Id = t.id_project
-                 AND t.id_project = 1";
+                 AND t.id_project = ?";
       $result = $this->db->query($sql, array($id_user));
+      // echo $this->db->last_query();
+      // exit;
       return $result->result();
     }
     function getActividades($id_user){
@@ -60,7 +62,7 @@ class M_usuario extends  CI_Model{
     function getIdProyecto($proyecto){
       $sql = "SELECT p.Id
                 FROM proyectos p
-               WHERE (c.Nombre LIKE '".$proyecto."')";
+               WHERE (p.Nombre LIKE '".$proyecto."')";
       $result = $this->db->query($sql);
       return $result->row()->Id;
     }

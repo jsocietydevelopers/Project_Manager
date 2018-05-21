@@ -22,7 +22,7 @@
  
 <body>
 	<header id="main-header">
-		<a id="logo-header" href="#">
+		<a id="logo-header" href="Admin">
 			<span class="site-name">Project Manager</span>
 			<span class="site-desc">Crear proyecto</span>
 		</a>

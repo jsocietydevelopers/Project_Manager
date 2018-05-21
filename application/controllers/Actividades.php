@@ -17,9 +17,9 @@ class Actividades extends CI_Controller {
         $html  = '';
         $cont  = 1;
         $acti  = '';
-        $datos = $this->M_usuario->getTareas($this->session->userdata('Id_user'));
+        $datos = $this->M_usuario->getTareas($this->session->userdata('Id_project'));
         if(count($datos) == 0){
-            return;
+            $html = '';
         }else {
             foreach ($datos as $key){
                 /*if($key->acti_name == ''){
